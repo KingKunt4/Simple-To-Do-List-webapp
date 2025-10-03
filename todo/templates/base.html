@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width= device-width; initial-scale= 1.0">
+		<link rel="stylesheet" href="{% static 'styles.css' %}">
+		<title>Taskit | {% block title %}{% endblock %}</title>
+	</head>
+	<body>
+        <div class="card">
+            <h1>{% block heading %}{% endblock %}</h1>
+            {% block body %}
+            {% endblock %}
+        </div>
+        <footer>
+            <p>@ 2025. Developed by Otega</p>
+        </footer>
+	</body>
+</html>

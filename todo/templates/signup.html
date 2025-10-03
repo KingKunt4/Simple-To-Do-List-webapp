@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block title%}Signup{%endblock%}
+{%block heading%}Sign Up{%endblock%}
+{%block body%}
+<form action="." method="post">
+    {% csrf_token %}
+    <div>
+        <label class="labels">Username:</label><br>
+        {{form.username}}
+    </div>
+     <div>
+        <label class="labels">Email:</label><br>
+        {{form.email}}
+    </div>
+     <div>
+        <label class="labels">Password:</label><br>
+        {{form.password1}}
+    </div>
+     <div>
+        <label class="labels">Repeat Password:</label><br>
+        {{form.password2}}
+    </div>
+    <button type="submit" class="btn">sign up</button>
+    {% if form.errors %}
+        <ul>
+            {%for field in form%}
+            {%for error in field.errors %}
+            <li>{{field.label}}: {{error}}</li>
+            {%endfor%}
+            {%endfor%}
+            {%for error in form.non_field_errors%}
+            <li>{{error}}</li>
+            {%endfor%}
+        </ul>
+    {% endif %}
+</form>
+{% endblock %}
