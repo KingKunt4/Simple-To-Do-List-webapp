@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import SignupForm
+from .models import Todo
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html',)
 
 def signup(request):
     if request.method == 'POST':

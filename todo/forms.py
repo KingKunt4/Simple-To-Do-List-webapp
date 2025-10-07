@@ -12,4 +12,6 @@ class SignupForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     model = User
-    fields = ('username', 'password') 
+    fields = ('username', 'password')
+    username = forms.CharField(widget= forms.TextInput(attrs={'id': 'fields'}))
+    password = forms.CharField(widget= forms.PasswordInput(attrs={'id': 'fields'}))
