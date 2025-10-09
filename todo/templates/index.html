@@ -1,11 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}create a  task{%endblock %}
+{% block title %}create a  task{% endblock %}
 
 {% block body %}
-<form action="." type="get" class="todo">
-	<input type="text" id="fields" name="fields" placeholder="create a task">
-	<button type="submit" id="save-btn">add task</button>
+<form method="POST" action=".">
+	{% csrf_token %}
+	<div class="fields">
+		{{form.title}}
+	</div>
+	<div class="fields">
+		{{form.deadline}}
+		{{form.complete}}
+		<p style="display: inline">completed</p>
+	</div>
+
+	<button type="submit" class="btn">Add task</button>
+	{% for error in form.error %}
+	<p>{{error}}</p>
+	{% endfor %}
 </form>
+{% for task in list %}
+<div class="tasks">
+	<p>{{task.title}}</p>
+	<p style="font-size: 0.5em;">{{task.deadline}}</p>
+	<button type="button">{{task.completed}}</button>
+</div>
+{% endfor %}
 {% endblock %}
 {% block heading %}Get Shit Done{% endblock %}

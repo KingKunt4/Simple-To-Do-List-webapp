@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Todo(models.Model):
-    task = models.CharField(max_length=700)
-    tag = models.IntegerField(auto_created=True)
+class Task(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length= 200)
+    deadline = models.DateField()
+    complete = models.BooleanField(default=False)
 
-    class Meta():
-        ordering = ('-tag',)
-    def ___str__(self):
-        return self.task
+    def __str__(self):
+        return self.title
